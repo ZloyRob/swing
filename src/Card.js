@@ -236,30 +236,30 @@ const Card = (stack, targetElement, prepend) => {
     });
 
     springThrowOut.addListener({
-      onSpringAtRest: () => {
-        eventEmitter.trigger('throwoutend', {
-          target: targetElement
-        });
-      },
-      onSpringUpdate: (spring) => {
-        const value = spring.getCurrentValue();
+//       onSpringAtRest: () => {
+//         eventEmitter.trigger('throwoutend', {
+//           target: targetElement
+//         });
+//       },
+//       onSpringUpdate: (spring) => {
+//         const value = spring.getCurrentValue();
 
-        let coordianteX;
-        let coordianteY;
-        let directionFactor;
+//         let coordianteX;
+//         let coordianteY;
+//         let directionFactor;
 
-        if (lastThrow.direction === Direction.RIGHT || lastThrow.direction === Direction.LEFT) {
-          directionFactor = lastThrow.direction === Direction.RIGHT ? 1 : -1;
-          coordianteX = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromX, throwOutDistance * directionFactor);
-          coordianteY = lastThrow.fromY;
-        } else if (lastThrow.direction === Direction.UP || lastThrow.direction === Direction.DOWN) {
-          directionFactor = lastThrow.direction === Direction.DOWN ? 1 : -1;
-          coordianteX = lastThrow.fromX;
-          coordianteY = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromY, throwOutDistance * directionFactor);
-        }
+//         if (lastThrow.direction === Direction.RIGHT || lastThrow.direction === Direction.LEFT) {
+//           directionFactor = lastThrow.direction === Direction.RIGHT ? 1 : -1;
+//           coordianteX = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromX, throwOutDistance * directionFactor);
+//           coordianteY = lastThrow.fromY;
+//         } else if (lastThrow.direction === Direction.UP || lastThrow.direction === Direction.DOWN) {
+//           directionFactor = lastThrow.direction === Direction.DOWN ? 1 : -1;
+//           coordianteX = lastThrow.fromX;
+//           coordianteY = rebound.MathUtil.mapValueInRange(value, 0, 1, lastThrow.fromY, throwOutDistance * directionFactor);
+//         }
 
-        onSpringUpdate(coordianteX, coordianteY);
-      }
+//         onSpringUpdate(coordianteX, coordianteY);
+//       }
     });
 
     /**
